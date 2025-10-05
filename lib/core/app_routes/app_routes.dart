@@ -1,4 +1,4 @@
-import 'package:clipframe/view/screen/home/home.dart';
+import 'package:clipframe/view/screen/home_screen/home.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
