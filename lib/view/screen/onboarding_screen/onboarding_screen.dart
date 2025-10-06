@@ -19,8 +19,8 @@ class OnboardingScreen extends StatelessWidget {
       appBar: appBarLogin(),
       body: Container(
         //<======================= Background Color ================================>
-        width: 440.w,
-        height: 956.h,
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: AlignmentGeometry.topLeft,
@@ -34,7 +34,7 @@ class OnboardingScreen extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
               //============= Logo Here ============
@@ -51,7 +51,7 @@ class OnboardingScreen extends StatelessWidget {
                 children: [
                   CustomText(
                     text: AppString.onboardingTitle,
-                    fontSize: 24,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
                 ],
@@ -76,6 +76,7 @@ class OnboardingScreen extends StatelessWidget {
               //=================== Buttton Here ==============
               SizedBox(height: 30.h),
               CustomButton(
+                width: double.infinity,
                 height: 84.h,
                 onTap: () {
                   //====================== Go To Home Page =====================
@@ -85,6 +86,7 @@ class OnboardingScreen extends StatelessWidget {
 
               //=================== Privacy Policy =============
               SizedBox(height: 15.h),
+              Spacer(),
               Wrap(
                 alignment: WrapAlignment.start,
                 children: [
@@ -98,6 +100,7 @@ class OnboardingScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: 20.h),
             ],
           ),
         ),

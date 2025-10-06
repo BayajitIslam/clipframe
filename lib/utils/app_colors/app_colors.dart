@@ -10,4 +10,6 @@ class AppColors {
   static const Color buttonBg = Color(0xFF007CFE);
   static const Color blackShadow = Color.fromRGBO(0, 0, 0, 0.8);
   static const Color black50 = Color.fromRGBO(0, 0, 0, 0.5);
+   static const Color black70 = Color.fromRGBO(0, 0, 0, 0.7);
+   static const Color white60 = Color.fromRGBO(255, 255, 255, 0.6);
 }

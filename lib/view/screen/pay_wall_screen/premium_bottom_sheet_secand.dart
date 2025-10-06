@@ -1,8 +1,8 @@
-import 'dart:ui';
-
 import 'package:clipframe/utils/app_colors/app_colors.dart';
 import 'package:clipframe/utils/app_images/app_images.dart';
-import 'package:clipframe/view/widget/custome_button/custome_button.dart';
+import 'package:clipframe/utils/app_static_string/app_string.dart';
+import 'package:clipframe/view/screen/pay_wall_screen/inner_widget/inner_widget.dart';
+import 'package:clipframe/view/widget/custome_text/custome_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,7 +12,6 @@ Future<T?> showPremiumBottomSheetBenifits<T>(BuildContext context) {
     enableDrag: false,
     isScrollControlled: true,
     shape: BeveledRectangleBorder(),
-    backgroundColor: Colors.transparent,
     context: context,
     builder: (context) {
       return Container(
@@ -24,47 +23,70 @@ Future<T?> showPremiumBottomSheetBenifits<T>(BuildContext context) {
         ),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 47,
-                right: 20,
-                left: 20,
-                bottom: 23,
-              ),
-              child: Row(
-                children: [
-                  //================================== Back To Home Button =======================================
-                  CustomButton(
-                    isTexton: false,
-                    isIconOn: true,
-                    borderRadius: 99,
-                    width: 44,
-                    height: 44,
-                    onTap: () {
-                      Navigator.of(
-                        context,
-                        rootNavigator: true,
-                      ).popUntil((route) => route.isFirst);
-                    },
-                  ),
+            //==================================  Premium Pages AppBar =======================================
+            PremiumPagesAppBar(),
 
-                  //===================================== logo here ===================================
-                  SizedBox(width: 87.5.w),
-                  Image.asset(AppImages.logoWhite),
+            //============================== Premium Plane / What i Offer ======================
+            SizedBox(height: 23.h),
+            ContainerForPremiumPages(
+              height: 278,
+              width: 380,
+              borderRadius: 25,
+              widget: Column(
+                children: [
+                  IconAndTextRow(icon: Icons.bolt),
+                  IconAndTextRow(icon: Icons.emoji_emotions_outlined),
+                  IconAndTextRow(
+                    icon: Icons.access_time,
+                    text: AppString.fasterProseeing,
+                  ),
+                  IconAndTextRow(
+                    icon: Icons.settings_outlined,
+                    text: AppString.noWaterMarks,
+                  ),
+                  IconAndTextRow(icon: Icons.block, text: AppString.removeAds),
                 ],
               ),
             ),
-            //============================== Premium Plane ======================
-            ClipRRect(
-              borderRadius: BorderRadiusGeometry.circular(25),
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-                child: Container(
-                  width: 380.w,
-                  height: 278.h,
-                  color: AppColors.black50,
-                  child: Column(children: [Text("Hello ")]),
-                ),
+
+            //============================== Premium Plane / Not Sure yet? ===============================
+            SizedBox(height: 14.h),
+            ContainerForPremiumPages(
+              height: 78,
+              width: 380,
+              top: 15,
+              bottom: 15,
+              //============================== Plan Name & Plane Price ===============================
+              widget: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  //============================== Plan Name  ===============================
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CustomText(
+                        text: AppString.notSureYet,
+                        color: AppColors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                      ),
+                      CustomText(
+                        text: AppString.enableFreeAccess,
+                        color: AppColors.white60,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                      ),
+                    ],
+                  ),
+
+                  //============================== Plane Price ===============================
+                  PlanPriceWidget(
+                    reelNumber: 1,
+                    postNumber: 1,
+                    storyNumber: 3,
+                    monthOrYear: AppString.month,
+                  ),
+                ],
               ),
             ),
           ],
